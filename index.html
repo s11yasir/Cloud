@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Single-File Website</title>
+  <meta name="description" content="A clean, responsive single-page HTML website." />
+  <style>
+    /* Simple reset */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.04);
+      --radius:12px; --maxw:1100px; --gap:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; background: linear-gradient(180deg,#071021 0%, #071827 100%); color:#e6eef6;}
+    a{color:var(--accent);text-decoration:none}
+    header{backdrop-filter: blur(6px); background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); position:sticky; top:0; z-index:40;}
+    .container{max-width:var(--maxw); margin:0 auto; padding:24px;}
+
+    /* Nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:600}
+    .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav ul{display:flex;gap:18px;list-style:none;padding:0;margin:0}
+    .cta{border:1px solid rgba(255,255,255,0.06); padding:8px 12px;border-radius:999px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:48px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015)); padding:28px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    h1{font-size:clamp(1.6rem,3.2vw,2.6rem);margin:0 0 12px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .buttons{display:flex;gap:12px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#021024;padding:12px 16px;border-radius:10px;border:none;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:10px}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .feature{padding:14px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+    .feature h4{margin:8px 0 6px}
+    .muted{color:var(--muted);font-size:0.95rem}
+
+    /* Footer */
+    footer{padding:36px 0;color:var(--muted);}
+
+    /* Responsive */
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+      .mobile-menu-toggle{display:inline-flex}
+    }
+    @media (max-width:560px){
+      .features{grid-template-columns:1fr}
+    }
+
+    /* Simple form */
+    .field{display:flex;flex-direction:column;gap:8px}
+    input[type="text"],input[type="email"],textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    textarea{min-height:100px}
+
+    /* Small helper */
+    .muted-2{color:#9aa9b8;font-size:0.88rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">MW</div>
+        <div>
+          <div style="font-weight:700">My Website</div>
+          <div style="font-size:0.82rem;color:var(--muted);margin-top:2px">Simple • Fast • Responsive</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <a class="cta" href="#try">Try Demo</a>
+        <button class="mobile-menu-toggle btn-ghost" aria-label="Open menu" style="display:none">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1>Build something beautiful — fast.</h1>
+          <p class="lead">A clean single-file HTML template you can edit, extend, and use as a starting point for a portfolio, product landing page, or simple company site.</p>
+          <div class="buttons">
+            <button class="btn-primary" onclick="scrollToSection('contact')">Get in touch</button>
+            <a class="btn-ghost" href="#features">See features</a>
+          </div>
+
+          <div class="features" style="margin-top:18px">
+            <div class="feature">
+              <div style="font-size:1.05rem;font-weight:600">Responsive</div>
+              <div class="muted">Optimized to look great on phones, tablets, and desktop.</div>
+            </div>
+            <div class="feature">
+              <div style="font-size:1.05rem;font-weight:600">Single File</div>
+              <div class="muted">HTML, CSS and a little JS — everything in one file for easy sharing.</div>
+            </div>
+            <div class="feature">
+              <div style="font-size:1.05rem;font-weight:600">Accessible</div>
+              <div class="muted">Semantic markup and keyboard-friendly controls.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 style="margin-top:0">Quick demo</h3>
+          <p class="muted">Download a copy, edit the text, swap images, and you have a full landing page.</p>
+          <div style="margin-top:16px">
+            <div class="muted-2">Example stats</div>
+            <div style="display:flex;gap:10px;margin-top:8px">
+              <div style="flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;text-align:center">12k<br><span class="muted">Users</span></div>
+              <div style="flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;text-align:center">98%<br><span class="muted">Satisfaction</span></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="features" style="margin-top:18px">
+      <h2 style="margin:8px 0">Features</h2>
+      <p class="muted">What this template includes</p>
+      <div class="features" style="margin-top:12px">
+        <div class="feature">
+          <h4>Clean code</h4>
+          <div class="muted">Well-structured HTML, CSS variables for easy theming, and minimal JS.</div>
+        </div>
+        <div class="feature">
+          <h4>Lightweight</h4>
+          <div class="muted">No external libraries — fast to load and easy to host anywhere.</div>
+        </div>
+        <div class="feature">
+          <h4>Editable</h4>
+          <div class="muted">Commented sections make customization straightforward.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:28px">
+      <h2>About</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="muted">This template is intended to be a minimal, friendly starting point. Use it as a portfolio, product landing page, or learning exercise. Replace text and images, add your analytics, or hook up a backend — all from this single file.</p>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px">
+      <h2>Contact</h2>
+      <div class="card" style="margin-top:12px;display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start">
+        <form onsubmit="event.preventDefault();alert('Thanks! This demo form does not send messages.');" style="display:flex;flex-direction:column;gap:12px">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn-primary" type="submit">Send message</button>
+            <div class="muted">or email: <a href="mailto:hello@example.com">hello@example.com</a></div>
+          </div>
+        </form>
+
+        <div>
+          <h4 style="margin-top:0">Quick contact</h4>
+          <p class="muted">Phone: (555) 123-4567<br>Location: Remote</p>
+          <div style="margin-top:12px"><small class="muted-2">Follow</small>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a href="#">Twitter</a>
+              <a href="#">LinkedIn</a>
+              <a href="#">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div class="muted">© <span id="year"></span> My Website. Built with ❤️.</div>
+        <div class="muted">Made for demo — customize freely.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  </script>
+</body>
+</html>
+
